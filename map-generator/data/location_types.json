@@ -1,0 +1,46 @@
+{
+  "types": {
+    "entry": {
+      "label": "Entry Point",
+      "color": [100, 130, 155, 255],
+      "weight": 0.10
+    },
+    "encounter": {
+      "label": "Encounter",
+      "color": [185, 45, 35, 255],
+      "weight": 0.25
+    },
+    "environmental": {
+      "label": "Environmental Hazard",
+      "color": [155, 175, 45, 255],
+      "weight": 0.20
+    },
+    "scrap_guarded": {
+      "label": "Scrap (Guarded)",
+      "color": [200, 145, 35, 255],
+      "weight": 0.20
+    },
+    "scrap_open": {
+      "label": "Scrap (Open)",
+      "color": [165, 155, 110, 255],
+      "weight": 0.15
+    },
+    "special": {
+      "label": "Special",
+      "color": [120, 75, 175, 255],
+      "weight": 0.10
+    }
+  },
+  "terrain_types": [
+    "Drowned Coast",
+    "Reactor Country",
+    "Ashfall Plains",
+    "Rusted Reach",
+    "Bone Flats",
+    "Irradiated Highlands",
+    "Flooded Industrial",
+    "Crater Basin",
+    "Salt Wastes",
+    "Toxic Delta"
+  ]
+}

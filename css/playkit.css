@@ -1,0 +1,432 @@
+/* ============================================================
+   SALVAGE UNION PLAYKIT — PRINT STYLESHEET
+   ------------------------------------------------------------
+   Aesthetic: rusted utility document. Field manual for a piece
+   of industrial equipment that's been in service forty years.
+   Functional, slightly worn, readable in bad light.
+   
+   All design tokens are defined at the top — change a variable
+   to retune the entire kit.
+   ============================================================ */
+
+/* --- FONT FACES (loaded from /fonts) ---------------------- */
+
+@font-face {
+    font-family: 'Display';
+    src: url('../fonts/SourceSansPro-Black.ttf');
+    font-weight: 900;
+}
+@font-face {
+    font-family: 'Display';
+    src: url('../fonts/SourceSansPro-Bold.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Body';
+    src: url('../fonts/SourceSansPro-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Body';
+    src: url('../fonts/SourceSansPro-It.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Body';
+    src: url('../fonts/SourceSansPro-Semibold.ttf');
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Body';
+    src: url('../fonts/SourceSansPro-Bold.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Body';
+    src: url('../fonts/SourceSansPro-BoldIt.ttf');
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Mono';
+    src: url('../fonts/DejaVuSansMono.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mono';
+    src: url('../fonts/DejaVuSansMono-Oblique.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* --- DESIGN TOKENS ---------------------------------------- */
+
+:root {
+    /* Color palette — pulled from setting language:
+       "rusting gate", "world grew red and crumbled" */
+    --ink:         #1a1611;   /* near-black, warm */
+    --ink-soft:    #3a342b;   /* secondary text */
+    --note:        #5a4a3a;   /* mediator notes — faded ink */
+    --rust:        #7a2e1f;   /* deep oxide red — accents */
+    --rust-dim:    #5a2418;   /* darker rust — borders */
+    --paper:       #f4ede0;   /* heavy paper cream — bg */
+    --paper-dim:   #e8dfd0;   /* recessed surfaces */
+    --rule:        #a89c87;   /* hairline rules */
+    --slot:        #8a7e6a;   /* writing slot lines */
+
+    /* Typography */
+    --font-display: 'Display', 'TeX Gyre Heros Cn', 'Arial Black', sans-serif;
+    --font-body:    'Body', 'DejaVu Sans', 'Helvetica', sans-serif;
+    --font-mono:    'Mono', 'DejaVu Sans Mono', 'Courier New', monospace;
+}
+
+/* --- PAGE SETUP ------------------------------------------- */
+
+@page {
+    size: letter;
+    margin: 0.75in 0.85in 0.85in 0.85in;
+
+    @bottom-left {
+        content: string(worksheet-title);
+        font-family: var(--font-mono);
+        font-size: 8pt;
+        color: var(--note);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+    @bottom-center {
+        content: "— " counter(page) " —";
+        font-family: var(--font-mono);
+        font-size: 9pt;
+        color: var(--rust);
+        letter-spacing: 0.1em;
+    }
+    @bottom-right {
+        content: string(section-title);
+        font-family: var(--font-mono);
+        font-size: 8pt;
+        color: var(--note);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+}
+
+/* Cover page — no running headers/footers */
+@page :first {
+    @bottom-left   { content: ""; }
+    @bottom-center { content: ""; }
+    @bottom-right  { content: ""; }
+}
+
+/* --- BASE TYPOGRAPHY -------------------------------------- */
+
+html {
+    font-family: var(--font-body);
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--paper);
+}
+
+body {
+    background: var(--paper);
+    margin: 0;
+    padding: 0;
+}
+
+/* --- HEADINGS --------------------------------------------- */
+
+h1 {
+    /* Document title — only the worksheet name uses h1.
+       Captured as a page-string for the running header. */
+    string-set: worksheet-title content();
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 36pt;
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0 0 0.2in 0;
+    padding: 0;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+h2 {
+    /* Section header — sets page-string for running footer.
+       Always starts on a new page. */
+    string-set: section-title content();
+    page-break-before: always;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 22pt;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0 0 0.05in 0;
+    padding: 0 0 0.08in 0;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    /* The double-rule under section titles — stamped-metal feel */
+    border-bottom: 1.5pt solid var(--rust);
+    box-shadow: 0 3pt 0 -2pt var(--rust);
+    position: relative;
+}
+
+/* But: the FIRST h2 in the document (after the cover) shouldn't 
+   force an extra blank page — the cover already broke for us */
+h1 + h2,
+h1 + p + h2,
+h1 + p + p + h2 {
+    /* nothing — those H2s aren't right after H1 in practice;
+       page-breaks are handled by our <hr class="page-break"> */
+}
+
+h3 {
+    /* Question text — the load-bearing element on every worksheet.
+       This is where the reader's eye lands. */
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12pt;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0.22in 0 0.05in 0;
+    padding: 0;
+}
+
+h4 {
+    /* Sub-question text — slightly lighter than h3 */
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0.16in 0 0.04in 0;
+    padding: 0;
+}
+
+h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 10.5pt;
+    color: var(--ink-soft);
+    margin: 0.14in 0 0.04in 0;
+}
+
+/* --- PARAGRAPHS ------------------------------------------- */
+
+p {
+    margin: 0 0 0.1in 0;
+    /* Light leading for printed read */
+    line-height: 1.55;
+}
+
+/* Subtitle (the italic line at top of cover) — first italic
+   paragraph after h1 */
+h1 + p em,
+h1 + p i {
+    display: block;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--ink-soft);
+    margin-top: -0.05in;
+    margin-bottom: 0.3in;
+    letter-spacing: 0.02em;
+}
+
+/* "Mediator note" italic paragraphs — distinguished by
+   starting with "Mediator note:" or wrapped in an .mediator-note class.
+   The python script tags them; see below. */
+.mediator-note,
+p.mediator-note {
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--note);
+    background: var(--paper-dim);
+    border-left: 2pt solid var(--rust);
+    padding: 0.08in 0.14in 0.08in 0.14in;
+    margin: 0.06in 0 0.18in 0;
+    /* The "service terminal annotation" feel */
+}
+.mediator-note em,
+p.mediator-note em {
+    color: var(--ink-soft);
+    font-style: italic;
+}
+.mediator-note strong,
+p.mediator-note strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* --- WRITING SLOTS ---------------------------------------- */
+
+/* The blockquote-with-underscore pattern becomes a ruled writing line.
+   The python script transforms `> _` blockquotes into div.writing-slot
+   so we can style them precisely without inheriting <blockquote> baggage. */
+
+.writing-slot {
+    height: 0.42in;
+    margin: 0.05in 0 0.14in 0;
+    border-bottom: 0.5pt solid var(--slot);
+    /* The faint ruled-paper feel for the answer space */
+    background: transparent;
+}
+
+/* Multiple consecutive writing slots (notes/list-style answers) get
+   slightly tighter spacing */
+.writing-slot + .writing-slot {
+    margin-top: 0;
+}
+
+/* --- BLOCKQUOTES (tips, callouts) ------------------------- */
+
+/* Non-empty blockquotes are tip/callout boxes — used for
+   "Tip for the Mediator:" lines and similar */
+blockquote {
+    font-family: var(--font-body);
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    background: var(--paper-dim);
+    border-left: 3pt solid var(--rust);
+    padding: 0.1in 0.16in;
+    margin: 0.14in 0 0.18in 0;
+}
+blockquote p {
+    margin: 0;
+}
+blockquote strong {
+    color: var(--rust);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 9.5pt;
+}
+
+/* --- LISTS ------------------------------------------------ */
+
+ul, ol {
+    padding-left: 0.28in;
+    margin: 0.06in 0 0.14in 0;
+}
+li {
+    margin-bottom: 0.04in;
+    line-height: 1.5;
+}
+
+/* --- COVER PAGE ------------------------------------------- */
+
+/* The cover is everything before the first h2.
+   We wrap it in <section class="cover"> via the python script. */
+.cover {
+    page-break-after: always;
+    /* Centered vertically-ish on the page */
+    padding-top: 0.6in;
+}
+
+.cover h1 {
+    font-size: 48pt;
+    line-height: 0.95;
+    margin-bottom: 0.15in;
+    /* The heavy slab of the cover title */
+}
+
+.cover .subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 16pt;
+    color: var(--ink-soft);
+    margin-bottom: 0.5in;
+    letter-spacing: 0.01em;
+}
+
+.cover .lede {
+    /* The opening descriptive paragraphs of each worksheet */
+    font-size: 11pt;
+    line-height: 1.6;
+    max-width: 5.5in;
+    margin-bottom: 0.3in;
+    color: var(--ink-soft);
+}
+
+/* The metadata fields on the cover — "Date:", "Mediator:", etc. */
+.cover .meta-fields {
+    margin-top: 0.5in;
+    padding-top: 0.2in;
+    border-top: 1pt solid var(--rust);
+}
+
+.cover .meta-fields p {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11pt;
+    color: var(--ink);
+    margin: 0.15in 0;
+    letter-spacing: 0.02em;
+}
+
+/* The "salvage stamp" — an aesthetic touch on the cover */
+.cover::before {
+    content: "SALVAGE UNION // WORKSHEET";
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    margin-bottom: 0.4in;
+    padding-bottom: 0.08in;
+    border-bottom: 0.5pt solid var(--rust);
+}
+
+/* --- PAGE BREAKS ------------------------------------------ */
+
+hr.page-break {
+    /* The python script converts <!-- page-break --> comments to this */
+    page-break-after: always;
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    border: none;
+}
+
+/* Standard <hr> (from --- in markdown) — subtle separator,
+   not a page break */
+hr:not(.page-break) {
+    border: none;
+    border-top: 0.5pt solid var(--rule);
+    margin: 0.25in 0;
+    height: 0;
+}
+
+/* --- LINKS, EMPHASIS -------------------------------------- */
+
+em, i {
+    font-style: italic;
+}
+
+strong, b {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+a {
+    color: var(--rust);
+    text-decoration: none;
+    border-bottom: 0.5pt solid var(--rust);
+}
+
+/* --- AVOID ORPHAN HEADINGS -------------------------------- */
+
+h3, h4 {
+    page-break-after: avoid;
+}
+.writing-slot {
+    page-break-before: avoid;
+}
+.mediator-note {
+    page-break-inside: avoid;
+}

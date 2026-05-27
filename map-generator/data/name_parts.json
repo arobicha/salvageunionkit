@@ -1,0 +1,206 @@
+{
+  "entry": {
+    "prefixes": [
+      "Breach", "Vent", "Shaft", "Hatch", "Gate", "Crawl", "Drain", "Gash",
+      "Fissure", "Slit", "Gap", "Hole", "Port", "Tunnel", "Throat", "Mouth"
+    ],
+    "middles": [
+      "Point", "Access", "Way", "Pass", "Approach", "Inlet", "Opening",
+      "Entry", "Channel", "Corridor", "Route", "Bypass"
+    ]
+  },
+  "encounter": {
+    "prefixes": [
+      "Raider", "Scavenger", "Corpo", "Marauder", "Waster", "Gang", "Wraith",
+      "Bandit", "Skulk", "Patrol", "Pack", "Rogue", "Kill", "Death", "Grim"
+    ],
+    "middles": [
+      "Camp", "Post", "Hold", "Nest", "Den", "Ground", "Pit", "Station",
+      "Haunt", "Territory", "Claim", "Trap", "Watch", "Perch", "Base"
+    ],
+    "subtypes": [
+      "Raider Patrol",
+      "Scavenger Ambush",
+      "Corpo Security Detail",
+      "Marauder Camp",
+      "Rogue Mech",
+      "Waster Gang",
+      "Bounty Hunters",
+      "Skulker Pack",
+      "Deserter Squad",
+      "Hired Guns"
+    ]
+  },
+  "environmental": {
+    "prefixes": [
+      "Rad", "Acid", "Toxic", "Fume", "Burn", "Flood", "Rust", "Char",
+      "Breach", "Collapse", "Slag", "Vent", "Bleed", "Seep", "Spill"
+    ],
+    "middles": [
+      "Zone", "Field", "Pocket", "Pit", "Pool", "Leak", "Passage",
+      "Chamber", "Drain", "Seam", "Wash", "Surge", "Flow", "Sump"
+    ],
+    "subtypes": [
+      "Radiation Pocket",
+      "Acid Drainage",
+      "Unstable Structure",
+      "Fire Zone",
+      "Flooded Passage",
+      "Toxic Spill",
+      "Collapsing Ceiling",
+      "Electrical Hazard",
+      "Gas Leak",
+      "Steam Vent",
+      "Chemical Runoff",
+      "Irradiated Core"
+    ]
+  },
+  "scrap_guarded": {
+    "prefixes": [
+      "Locked", "Sealed", "Hidden", "Deep", "Buried", "Caged", "Chained",
+      "Vaulted", "Fortified", "Guarded", "Held", "Walled"
+    ],
+    "middles": [
+      "Cache", "Depot", "Store", "Stockpile", "Reserve", "Hoard",
+      "Heap", "Haul", "Lode", "Find", "Vault", "Hold"
+    ],
+    "subtypes": [
+      "Mech Frame Cache",
+      "Armaments Depot",
+      "Fuel Reserve",
+      "Component Stockpile",
+      "Munitions Cache",
+      "Engine Core",
+      "Weapons Cache",
+      "Power Cell Bank",
+      "Medical Stores",
+      "Rare Alloy Seam"
+    ]
+  },
+  "scrap_open": {
+    "prefixes": [
+      "Scattered", "Exposed", "Loose", "Abandoned", "Spilled", "Fallen",
+      "Stripped", "Rusted", "Broken", "Old", "Dead", "Spent"
+    ],
+    "middles": [
+      "Parts", "Load", "Gear", "Equipment", "Frame", "Shell", "Hull",
+      "Debris", "Wreck", "Haul", "Dump", "Pile", "Field", "Bed"
+    ],
+    "subtypes": [
+      "Scattered Components",
+      "Abandoned Load",
+      "Rusted Equipment",
+      "Exposed Salvage Seam",
+      "Debris Field",
+      "Salvage Dump",
+      "Stripped Hull",
+      "Old Mech Graveyard",
+      "Blown Cargo",
+      "Surface Scrap"
+    ]
+  },
+  "special": {
+    "prefixes": [
+      "Distress", "Buried", "Hidden", "Lost", "Strange", "Dead", "Silent",
+      "Ancient", "Sealed", "Dark", "Forgotten", "Hollow"
+    ],
+    "middles": [
+      "Beacon", "Bunker", "Terminal", "Signal", "Vault", "Chamber",
+      "Core", "Node", "Archive", "Relic", "Shrine", "Anomaly"
+    ],
+    "subtypes": [
+      "Distress Beacon",
+      "Hidden Bunker",
+      "Ancient Terminal",
+      "Survivor Hideout",
+      "Corporate Black Site",
+      "Strange Signal Source",
+      "Derelict AI Core",
+      "Sealed Laboratory",
+      "Emergency Cache",
+      "Unknown Structure"
+    ]
+  },
+
+  "settlement": {
+    "prefixes": [
+      "Brine", "Rust", "Cinder", "Grit", "Iron", "Slag", "Ash", "Bolt",
+      "Chain", "Flint", "Ore", "Tarn", "Weld", "Null", "Parch", "Krag"
+    ],
+    "middles": [
+      "head", "port", "hold", "gate", "stead", "ford", "mark", "reach",
+      "bank", "haven", "post", "side", "span", "stand", "works", "yard"
+    ]
+  },
+
+  "area": {
+    "prefixes": [
+      "Old", "Drowned", "Broken", "Fallen", "Hollow", "Cracked", "Scorched",
+      "Dead", "Grey", "Far", "Wide", "Low", "High", "Mid", "Lost", "Bare"
+    ],
+    "middles": [
+      "Basin", "Flat", "Valley", "Ridge", "Run", "Plain", "Field",
+      "Reach", "Waste", "Expanse", "Stretch", "Country", "Moor", "Delta",
+      "Shore", "Fen", "Cut", "Trench", "Sump", "Floodland"
+    ]
+  },
+
+  "threat_tyrant": {
+    "templates": [
+      "{name}'s Dominion", "The {name} Hegemony", "{name} Control",
+      "The {name} Authority", "{name}'s Iron Grip", "House {name}"
+    ],
+    "names": [
+      "Skane", "Vorak", "Dresh", "Halcor", "Mirk", "Torven", "Crael",
+      "Nullik", "Brane", "Drex", "Wult", "Karrox", "Sorn", "Fael"
+    ]
+  },
+
+  "threat_torment": {
+    "prefixes": [
+      "The", "The", "The", "The"
+    ],
+    "names": [
+      "Scourge Fleet", "Bleeding Pack", "Iron Wolves", "Ashwalkers",
+      "Rustborn", "Chain Breakers", "Marauder Tide", "Scalded",
+      "Null Riders", "Wraith Band", "Slagborn", "Hollow Men",
+      "Dread Convoy", "Bone Tide", "Corroded"
+    ]
+  },
+
+  "threat_environmental": {
+    "prefixes": [
+      "The", "The", "The", "The", "The"
+    ],
+    "names": [
+      "Radiation Belt", "Acid Floodplain", "Irradiated Core",
+      "Toxic Surge Zone", "Collapse Field", "Seismic Fault",
+      "Blightwater", "Spore Bloom", "Meltdown Perimeter",
+      "Chemical Sea", "Ashstorm Front", "Fume Expanse",
+      "Static Waste", "Boil Flats", "Choke Zone"
+    ]
+  },
+
+  "threat_brute": {
+    "prefixes": [
+      "The", "The", "The", "The", "The"
+    ],
+    "names": [
+      "Great Devourer", "Ironhide", "Wandering Colossus", "Bone Crusher",
+      "Pale Titan", "Rusted Behemoth", "Endless One", "Crawling Death",
+      "Shatter-Maw", "Grey Leviathan", "Rot-Walker", "The Hollow King",
+      "Scream-Forge", "Dead Mountain", "Null-Beast"
+    ]
+  },
+
+  "threat_aberration": {
+    "prefixes": [
+      "The", "The", "The", "The", "The"
+    ],
+    "names": [
+      "Signal", "Creep", "Fold", "Bleed", "Absence",
+      "Unmaking", "Quiet", "Inversion", "Hunger", "Stillness",
+      "Drift", "Wrong Shape", "Erasure", "Wound", "Echo"
+    ]
+  }
+}

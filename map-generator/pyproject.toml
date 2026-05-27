@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "su-map-generator"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.7",
+    "Pillow>=10.0",
+    "scipy>=1.13",
+]
+
+[project.scripts]
+su-map-gen = "main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "core*", "generators*", "renderers*"]
