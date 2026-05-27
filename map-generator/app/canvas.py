@@ -21,6 +21,7 @@ _SCENE_SIZE = 800.0
 class MapCanvas(QGraphicsView):
     node_selected = Signal(str)      # node_id
     graph_mutated = Signal()         # any structural change
+    area_activated = Signal(str)     # node_id — double-click on an area node
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -138,3 +139,10 @@ class MapCanvas(QGraphicsView):
         if event.button() == Qt.MiddleButton:
             self.setDragMode(QGraphicsView.RubberBandDrag)
         super().mouseReleaseEvent(event)
+
+    def mouseDoubleClickEvent(self, event) -> None:
+        for item in self.items(event.pos()):
+            if isinstance(item, NodeItem) and item._node.type == "area":
+                self.area_activated.emit(item.node_id)
+                return
+        super().mouseDoubleClickEvent(event)

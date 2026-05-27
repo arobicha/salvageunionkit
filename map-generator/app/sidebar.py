@@ -5,12 +5,13 @@ from typing import Any
 from PySide6.QtCore import Signal, Qt
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QComboBox,
-    QSpinBox, QLineEdit, QTextEdit, QPushButton, QGroupBox,
-    QFrame, QCheckBox,
+    QSpinBox, QLineEdit, QTextEdit, QPushButton, QGroupBox, QCheckBox,
 )
 
 from generators.base import GeneratorRegistry
 from core.node import LocationNode, VALID_TYPES
+from app._region_context import RegionContextPanel
+from app._widgets import widget_for_spec, hline
 
 
 class SidebarWidget(QWidget):
@@ -26,8 +27,12 @@ class SidebarWidget(QWidget):
         root.setAlignment(Qt.AlignTop)
 
         self._build_generator_section(root)
-        root.addWidget(_hline())
+        root.addWidget(hline())
         self._build_node_section(root)
+        root.addWidget(hline())
+        self._region_ctx = RegionContextPanel()
+        self._region_ctx.setVisible(False)
+        root.addWidget(self._region_ctx)
 
     # ── Generator section ────────────────────────────────────────────────────
 
@@ -83,7 +88,7 @@ class SidebarWidget(QWidget):
             if key == "seed":
                 continue
             label = QLabel(spec.get("label", key))
-            widget = _widget_for_spec(spec)
+            widget = widget_for_spec(spec)
             self._param_widgets[key] = widget
             row = QHBoxLayout()
             row.addWidget(label)
@@ -190,34 +195,30 @@ class SidebarWidget(QWidget):
             self._scrap_spin.value(),
         )
 
+    # ── Region context helpers ────────────────────────────────────────────
 
-def _widget_for_spec(spec: dict[str, Any]) -> QWidget:
-    kind = spec.get("type", "str")
-    if kind == "int":
-        w = QSpinBox()
-        w.setRange(spec.get("min", 0), spec.get("max", 9999))
-        w.setValue(spec.get("default", 0))
-        return w
-    if kind == "enum":
-        w = QComboBox()
-        for opt in spec.get("options", []):
-            w.addItem(str(opt))
-        default = spec.get("default", "")
-        idx = w.findText(str(default))
+    def set_params(self, gen_id: str, params: dict[str, Any]) -> None:
+        idx = self._gen_combo.findData(gen_id)
         if idx >= 0:
-            w.setCurrentIndex(idx)
-        return w
-    if kind == "bool":
-        w = QCheckBox()
-        w.setChecked(bool(spec.get("default", False)))
-        return w
-    w = QLineEdit()
-    w.setText(str(spec.get("default", "")))
-    return w
+            self._gen_combo.setCurrentIndex(idx)
+        for key, value in params.items():
+            widget = self._param_widgets.get(key)
+            if widget is None:
+                continue
+            if isinstance(widget, QSpinBox):
+                widget.setValue(int(value))
+            elif isinstance(widget, QComboBox):
+                i = widget.findText(str(value))
+                if i >= 0:
+                    widget.setCurrentIndex(i)
+            elif isinstance(widget, QLineEdit):
+                widget.setText(str(value))
+
+    def set_region_context(self, region_data: object | None) -> None:
+        self._region_ctx.set_region(region_data)
+        self._region_ctx.setVisible(region_data is not None)
+
+    def clear_region_context(self) -> None:
+        self.set_region_context(None)
 
 
-def _hline() -> QFrame:
-    line = QFrame()
-    line.setFrameShape(QFrame.HLine)
-    line.setFrameShadow(QFrame.Sunken)
-    return line
