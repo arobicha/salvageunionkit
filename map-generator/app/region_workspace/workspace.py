@@ -13,6 +13,7 @@ from persistence import RegionRepository
 from app.region_workspace.nav_rail import NavRail
 from app.region_workspace.region_view import RegionView
 from app.region_workspace.area_view import AreaView
+from app.reference import ReferenceView
 
 
 class RegionWorkspace(QWidget):
@@ -35,13 +36,16 @@ class RegionWorkspace(QWidget):
         self._placeholder.setStyleSheet("color: #6a6560; padding: 24px;")
         self._region_view = RegionView()
         self._area_view = AreaView()
+        self._reference_view = ReferenceView()
         self._stack.addWidget(self._placeholder)
         self._stack.addWidget(self._region_view)
         self._stack.addWidget(self._area_view)
+        self._stack.addWidget(self._reference_view)
         root.addWidget(self._stack, 1)
 
         self._nav.region_selected.connect(self._show_region)
         self._nav.area_selected.connect(self._show_area)
+        self._nav.reference_selected.connect(self._show_reference)
         self._nav.new_area_requested.connect(self._on_new_area)
         self._nav.delete_area_requested.connect(self._on_delete_area)
         self._region_view.notes_changed.connect(self._on_region_notes)
@@ -78,6 +82,9 @@ class RegionWorkspace(QWidget):
             return
         self._region_view.load(self._region, self._region_graph)
         self._stack.setCurrentWidget(self._region_view)
+
+    def _show_reference(self) -> None:
+        self._stack.setCurrentWidget(self._reference_view)
 
     def _show_area(self, area_id: str) -> None:
         if self._region is None:

@@ -1,4 +1,4 @@
-"""Left navigation rail: Region root + per-area children."""
+"""Left navigation rail: Region root + per-area children + Reference."""
 from __future__ import annotations
 
 from PySide6.QtCore import Signal, Qt
@@ -13,13 +13,15 @@ _AREA_ID_ROLE = Qt.UserRole + 1
 _KIND_ROLE = Qt.UserRole + 2
 _KIND_REGION = "region"
 _KIND_AREA = "area"
+_KIND_REFERENCE = "reference"
 
 
 class NavRail(QWidget):
     region_selected = Signal()
-    area_selected = Signal(str)        # area_id
+    area_selected = Signal(str)
+    reference_selected = Signal()
     new_area_requested = Signal()
-    delete_area_requested = Signal(str)  # area_id
+    delete_area_requested = Signal(str)
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -48,6 +50,8 @@ class NavRail(QWidget):
         root.addLayout(btn_row)
 
         self._region_item: QTreeWidgetItem | None = None
+        self._reference_item: QTreeWidgetItem | None = None
+        self._rebuild_empty()
 
     def load_region(self, region: RegionData) -> None:
         self._tree.clear()
@@ -61,11 +65,22 @@ class NavRail(QWidget):
             root_item.addChild(child)
         root_item.setExpanded(True)
         self._region_item = root_item
+        self._add_reference_item()
         self._tree.setCurrentItem(root_item)
 
     def clear(self) -> None:
         self._tree.clear()
         self._region_item = None
+        self._rebuild_empty()
+
+    def _rebuild_empty(self) -> None:
+        self._add_reference_item()
+
+    def _add_reference_item(self) -> None:
+        item = QTreeWidgetItem(["📖 Reference"])
+        item.setData(0, _KIND_ROLE, _KIND_REFERENCE)
+        self._tree.addTopLevelItem(item)
+        self._reference_item = item
 
     def _on_selection(self) -> None:
         item = self._tree.currentItem()
@@ -76,6 +91,8 @@ class NavRail(QWidget):
             self.region_selected.emit()
         elif kind == _KIND_AREA:
             self.area_selected.emit(item.data(0, _AREA_ID_ROLE))
+        elif kind == _KIND_REFERENCE:
+            self.reference_selected.emit()
 
     def _on_delete_clicked(self) -> None:
         item = self._tree.currentItem()

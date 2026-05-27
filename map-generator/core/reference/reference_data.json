@@ -1,0 +1,309 @@
+{
+  "tables": [
+    {
+      "id": "core_mechanic",
+      "name": "Core Mechanic Table",
+      "group": "CORE RESOLUTION",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Nailed it",
+         "body": "You have overcome the odds and managed an outstanding success. You may achieve an additional bonus of your choice to the action. When dealing damage, you can choose to double it or pick another appropriate bonus effect."},
+        {"min": 11, "max": 19, "headline": "Success",
+         "body": "You have achieved your goal without any compromises. When attacking, you hit the target and deal standard damage."},
+        {"min": 6, "max": 10, "headline": "Tough Choice",
+         "body": "You succeed in your action, but at a cost. The Mediator gives you a Tough Choice with some kind of Setback attached. When attacking, you hit, but must make a Tough Choice."},
+        {"min": 2, "max": 5, "headline": "Failure",
+         "body": "You have failed at what you were attempting to do. You face a Setback of the Mediator's choice. When attacking, you miss the target."},
+        {"min": 1, "max": 1, "headline": "Cascade Failure",
+         "body": "Something has gone terribly wrong. You suffer a severe consequence of the Mediator's choice. When attacking, you miss the target and suffer a Setback chosen by the Mediator."}
+      ]
+    },
+    {
+      "id": "npc_action",
+      "name": "NPC Action Table",
+      "group": "NPC TABLES",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Nailed It",
+         "body": "The NPC succeeds spectacularly at their action. They get an additional bonus of the Mediator's choice. If they are making an attack, they hit, and do double damage or get another bonus of the Mediator's choice."},
+        {"min": 11, "max": 19, "headline": "Success",
+         "body": "The NPC achieves their action successfully. An attack hits and deals standard damage."},
+        {"min": 6, "max": 10, "headline": "Tough Choice",
+         "body": "The NPC is successful, but faces a Tough Choice. The players give the Mediator a choice between two Setbacks. In combat, a weapon attack hits, but with a choice of Setback chosen by the players."},
+        {"min": 2, "max": 5, "headline": "Failure",
+         "body": "The NPC has failed at their action. The players choose an appropriate Setback for failure. In combat, a weapon attack misses."},
+        {"min": 1, "max": 1, "headline": "Cascade Failure",
+         "body": "The NPC has catastrophically failed at their action. They suffer a Severe Setback of the player's choice. A weapon attack misses, with a Severe Setback chosen by the players."}
+      ]
+    },
+    {
+      "id": "reactor_overload",
+      "name": "Reactor Overload Table",
+      "group": "HEAT",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Reactor Overdrive",
+         "body": "Your Mech's reactor goes into overdrive. Your Mech can take any additional action this turn or Push their next roll within 10 minutes for free."},
+        {"min": 11, "max": 19, "headline": "Reactor Overheat",
+         "body": "Your Mech's reactor has overheated. Your Mech shuts down and gains the Vulnerable Trait. Your Mech will re-activate at the end of your next turn. In addition, your Mech takes an amount of SP damage equal to your current Heat."},
+        {"min": 6, "max": 10, "headline": "Module Overload",
+         "body": "One of your Mech's Modules chosen at random or by the Mediator is destroyed."},
+        {"min": 2, "max": 5, "headline": "System Overload",
+         "body": "One of your Mech's Systems chosen at random or by the Mediator is destroyed."},
+        {"min": 1, "max": 1, "headline": "Reactor Overload",
+         "body": "Your Mech's reactor goes into full meltdown and explodes. Your Mech, as well as any mounted Systems, Modules, and all Cargo, is destroyed in the explosion. Everything in Close Range of your Mech takes SP damage equal to your Mech's Maximum Heat Capacity. They may take any Turn Action or Reaction in response to try to avoid this. Your Pilot dies unless they have a means to escape. The area your Mech was in becomes Irradiated."}
+      ]
+    },
+    {
+      "id": "reaction_roll",
+      "name": "Reaction Roll Table",
+      "group": "NPC TABLES",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Actively Helpful and Friendly",
+         "body": "The NPCs are incredibly friendly and positive towards the group and will actively help them in any reasonable way they can."},
+        {"min": 11, "max": 19, "headline": "Friendly",
+         "body": "The NPCs are friendly and willing to talk, trade, and offer information to the group; however, they will still ask for their fair share in return."},
+        {"min": 6, "max": 10, "headline": "Unfriendly",
+         "body": "The NPCs react in an unfriendly manner to the group; they are difficult to talk or trade with and reluctant to offer any help to the Pilots."},
+        {"min": 2, "max": 5, "headline": "Hostile",
+         "body": "The NPCs are actively hostile to the group. They will defend their area, make motions to attack, gesture and threaten, and be unwilling to help in any way."},
+        {"min": 1, "max": 1, "headline": "Actively Hostile",
+         "body": "The NPCs will launch an attack on the group if appropriate or flee from them, barricade themselves in, and avoid contact as though they were hostile."}
+      ]
+    },
+    {
+      "id": "area_salvage",
+      "name": "Area Salvage Table",
+      "group": "SALVAGING",
+      "page_ref": "p.245",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Jackpot!",
+         "body": "You find a Mech Chassis, System, or Module at the Tech Level of the area. It is in the Damaged Condition. This can be randomised or chosen by the Mediator."},
+        {"min": 11, "max": 19, "headline": "Winning",
+         "body": "You find 3 Scrap of the Tech Level of the area."},
+        {"min": 6, "max": 10, "headline": "Not Bad",
+         "body": "You find 2 Scrap of the Tech Level of the area."},
+        {"min": 2, "max": 5, "headline": "Better than Nothing",
+         "body": "You find 1 Scrap of the Tech Level of the area."},
+        {"min": 1, "max": 1, "headline": "Nothing",
+         "body": "You find nothing in this area."}
+      ]
+    },
+    {
+      "id": "mech_salvage",
+      "name": "Mech Salvage Table",
+      "group": "SALVAGING",
+      "page_ref": "p.245",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Lion's Share",
+         "body": "You salvage the Mech Chassis, a System and a Module of your choice mounted on it. They both have the Damaged Condition. Anything else is considered destroyed."},
+        {"min": 11, "max": 19, "headline": "Meat and Potatoes",
+         "body": "You salvage the Mech Chassis or a System or Module of your choice mounted on it. It has the Damaged Condition. Anything else is considered destroyed."},
+        {"min": 6, "max": 10, "headline": "Bits and Pieces",
+         "body": "You salvage a System or Module of your choice mounted on the Mech. It has the Damaged Condition. Anything else is considered destroyed."},
+        {"min": 2, "max": 5, "headline": "Nuts and Bolts",
+         "body": "You salvage half of the Salvage Value of the Mech Chassis in Scrap of its Tech Level, to a minimum of 1. Everything else is considered destroyed."},
+        {"min": 1, "max": 1, "headline": "Ashes and Dust",
+         "body": "The Mech is unsalvageable: its Chassis, Systems and Modules are all considered destroyed."}
+      ]
+    },
+    {
+      "id": "morale",
+      "name": "Morale Table",
+      "group": "NPC TABLES",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Fight to the Death",
+         "body": "The NPCs see this one through to the end. They hunker down and will not retreat from this fight under any circumstance."},
+        {"min": 11, "max": 19, "headline": "Keep Fighting",
+         "body": "The NPCs continue to fight this one out for now."},
+        {"min": 6, "max": 10, "headline": "Fighting Retreat",
+         "body": "The NPCs retreat, but do so whilst continuing to fight. They will fight for one more round and then retreat."},
+        {"min": 2, "max": 5, "headline": "Retreat",
+         "body": "The NPCs flee the fight as quickly and safely as possible."},
+        {"min": 1, "max": 1, "headline": "Surrender",
+         "body": "The NPCs surrender to whoever is attacking them. If there is nobody to surrender to, they will recklessly flee."}
+      ]
+    },
+    {
+      "id": "group_initiative",
+      "name": "Group Initiative Table",
+      "group": "ACTION SCENE",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "You Shot First",
+         "body": "Two Pilots chosen by the players act first. Play then passes to the NPC group and one NPC chosen by the Mediator acts next."},
+        {"min": 11, "max": 19, "headline": "Quickdraw",
+         "body": "One Pilot chosen by the players acts first. Play then passes to the NPC group and one NPC chosen by the Mediator acts."},
+        {"min": 6, "max": 10, "headline": "Wait and See",
+         "body": "One NPC chosen by the players acts first. Play then passes to the player group and one Pilot chosen by the players acts."},
+        {"min": 2, "max": 5, "headline": "Fumble",
+         "body": "One NPC chosen by the Mediator acts first. Play then passes to the player group and one Pilot chosen by the players acts."},
+        {"min": 1, "max": 1, "headline": "Ambush",
+         "body": "Two NPCs chosen by the Mediator act first. Play then passes to the player group and one Pilot is chosen by the players to act next."}
+      ]
+    },
+    {
+      "id": "retreat",
+      "name": "Retreat Table",
+      "group": "ACTION SCENE",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Perfect Escape",
+         "body": "The group makes a perfect escape from the situation to any location of their choice within the Region Map and cannot be pursued."},
+        {"min": 11, "max": 19, "headline": "Escape",
+         "body": "The group makes a safe escape from the situation to any adjacent location of their choice within the Map and cannot be pursued."},
+        {"min": 6, "max": 10, "headline": "Dangerous Escape",
+         "body": "The group escapes to any adjacent location of their choice within the Region Map, but at a cost. They must make a Tough Choice related to the situation."},
+        {"min": 2, "max": 5, "headline": "Failed Escape",
+         "body": "The group fails to retreat from the situation and are pinned down. They cannot retreat and must fight it out to the end."},
+        {"min": 1, "max": 1, "headline": "Disastrous Escape",
+         "body": "The group retreat to an adjacent location of their choice within the Region Map, but at a severe cost. They suffer a Severe Setback and may be pursued."}
+      ]
+    },
+    {
+      "id": "critical_damage",
+      "name": "Critical Damage Table",
+      "group": "DAMAGE",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Miraculous Survival",
+         "body": "Your Mech is somehow Intact. It has 1 SP and is still fully operational. Your Pilot is unharmed."},
+        {"min": 11, "max": 19, "headline": "Core Damage",
+         "body": "Your Mech Chassis is damaged and inoperable until repaired. All mounted Systems and Modules remain Intact. Your Pilot is reduced to 0 HP unless they have some means to escape the Mech."},
+        {"min": 6, "max": 10, "headline": "Module Destruction",
+         "body": "A Module mounted on your Mech is destroyed. This is chosen by the Mediator or at random. Your Mech Chassis is damaged and inoperable until repaired. Your Pilot is unharmed."},
+        {"min": 2, "max": 5, "headline": "System Destruction",
+         "body": "A System mounted on your Mech is destroyed. This is chosen by the Mediator or at random. Your Mech Chassis is damaged and inoperable until repaired. Your Pilot is unharmed."},
+        {"min": 1, "max": 1, "headline": "Catastrophic Damage",
+         "body": "The Mech, as well as any mounted Systems and Modules as well as all Cargo, is destroyed. Your Pilot dies unless they have a means to escape the Mech."}
+      ]
+    },
+    {
+      "id": "critical_injury",
+      "name": "Critical Injury Table",
+      "group": "DAMAGE",
+      "page_ref": "",
+      "brackets": [
+        {"min": 20, "max": 20, "headline": "Miraculous Survival",
+         "body": "You survive against the odds. You have 1 HP, remain conscious and can act normally."},
+        {"min": 11, "max": 19, "headline": "Unconscious",
+         "body": "You are stable at 0 HP, but unconscious and cannot move or take actions until you gain at least 1 HP. You will regain consciousness naturally in 1 hour and get back up with 1 HP."},
+        {"min": 6, "max": 10, "headline": "Minor Injury",
+         "body": "You suffer a Minor Injury such as a sprain, burns, or minor concussion. Your Max HP is reduced by 1 until healed in a Tech 3-4 Med Bay. In addition, you are Unconscious. Apply the result of 11-19."},
+        {"min": 2, "max": 5, "headline": "Major Injury",
+         "body": "You suffer a Major Injury such as permanent scarring, broken ribs, or internal injuries. Your Max HP is reduced by 2 until healed in a Tech 5-6 Med Bay. In addition, you are Unconscious. Apply the result of 11-19."},
+        {"min": 1, "max": 1, "headline": "Fatal Injury",
+         "body": "Your Pilot suffers a fatal injury and dies."}
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "tough_choice_examples",
+      "name": "Tough Choice Examples",
+      "group": "CORE RESOLUTION",
+      "page_ref": "p.253",
+      "body": "Default in combat — deal 1/2 Dmg or take 2 SP/HP Dmg & deal full Dmg.\nDefault out of combat — gain 2 Heat and succeed, or fail.\n\nOther options:\n• You hit, but damage a System or Module on your Mech.\n• You hit, but an enemy gets a free attack against you.\n• You hit, but activate the downside of your weapon.\n• You hit, but gain additional Heat.\n• You succeed in your task, but you must expend additional AP/EP.\n• You hit, but must make a Heat Check.\n• You betray a friend or make an enemy.\n• Save a waster from dying or get to a destination faster.\n• Save one wastelander from death, but not the other.\n• You Salvage something powerful, but activate its downside."
+    },
+    {
+      "id": "pushing",
+      "name": "Pushing",
+      "group": "CORE RESOLUTION",
+      "page_ref": "p.233",
+      "body": "• After rolling the die you may Push your Mech reactor to roll again.\n• You gain 2 Heat and make a Heat Check.\n• Decide before mediator describes consequences.\n• Can't Push if it'd take you over your Heat Cap.\n• Can only push a roll once.\n\nPush Order:\n1. Roll the Die.\n2. Re-roll the Die if you decide to push. Accept the result of the second roll.\n3. Resolve all of the effects of the roll.\n4. Increase your Heat by 2 and roll your Heat Check.\n5. If the Heat Check fails, roll on the Reactor Overload Table and resolve the outcome."
+    },
+    {
+      "id": "actions",
+      "name": "Actions",
+      "group": "ACTION SCENE",
+      "page_ref": "p.237",
+      "body": "Each player may do the following on their turn:\n• Move and one Turn Action.\n\nMay do the following at any time:\n• Any number of Free Actions or Reactions.\n\nAction Types:\n• Reaction — Instant\n• Free — Instant\n• Turn — 1 Min\n• Short — 10 Min\n• Long — 1 Hr\n• Downtime — 1 Week"
+    },
+    {
+      "id": "distances",
+      "name": "Distances",
+      "group": "ACTION SCENE",
+      "page_ref": "p.237",
+      "body": "Close Range — Within Range to launch an Attack or circle with short range weaponry.\nMedium Range — Clearly see target and use standard weapons.\nLong Range — See a rough outline of a target, can use long range weapons.\nFar Range — Off on the horizon, can see a rough silhouette if anything. Specialised weapons can work."
+    },
+    {
+      "id": "heat",
+      "name": "Heat",
+      "group": "HEAT",
+      "page_ref": "p.234",
+      "body": "• Gain Heat when using Systems, Modules, and Pushing etc.\n• Cannot gain Heat above your Heat Cap.\n• If an action requires you to gain Heat and it would take you over your Heat Cap, you may not do that Action.\n• If you start your Turn at your Heat Cap or reach your Heat Cap during the Turn, make a Heat Check.\n• To make a Heat Check roll a d20. If the result is equal to or under your Mech's current Heat, your reactor has overloaded. Roll on the Reactor Overload Table.\n• A roll of 20 is always a success."
+    },
+    {
+      "id": "activate_shutdown",
+      "name": "Activating and Shutting Down a Mech",
+      "group": "HEAT",
+      "page_ref": "p.238",
+      "body": "• To power up or Shut Down a Mech is a Turn Action.\n• A Mech that's Shut Down for 1 hr removes all Heat.\n• A Shut Down Mech is Vulnerable (takes 2× Dmg).\n• Embarking or disembarking from a Mech is a Turn Action.\n• You may disembark as a Reaction if you have an escape system."
+    },
+    {
+      "id": "mech_damage",
+      "name": "Mech Damage",
+      "group": "DAMAGE",
+      "page_ref": "p.239",
+      "body": "• Mechs take SP Dmg.\n• HP Dmg = SP/2.\n• When Mech SP reaches 0 roll on the Critical Damage Table.\n• Mech SP is restored during Downtime in the Crawler Mech Bay.\n• Systems and Modules can be Destroyed or Damaged.\n• They are repaired in the Mech Bay during Downtime or using Scrap in the field."
+    },
+    {
+      "id": "pilot_damage",
+      "name": "Pilot Damage",
+      "group": "DAMAGE",
+      "page_ref": "p.241",
+      "body": "• Pilots take HP Dmg.\n• SP Dmg = 2× HP.\n• When Pilot HP reaches 0 roll on Critical Injury Table.\n• Pilot HP is restored during Downtime in the Crawler Med Bay.\n• Pilots can receive long term injuries. They are healed in the Crawler Med Bay."
+    },
+    {
+      "id": "map_movement",
+      "name": "Map Movement",
+      "group": "MISC.",
+      "page_ref": "p.263",
+      "body": "Campaign Map:\n• Crawler or Pilot = 1 point in a week\n• Mech = 1 point in a day\n\nRegion Map:\n• Crawler or Pilot = 1 point in a day\n• Mech = 1 point in an hour\n\nArea Map:\n• Crawler or Pilot = 1 point in an hour\n• Mech = 1 point in 10 mins"
+    },
+    {
+      "id": "downtime",
+      "name": "Downtime Procedure",
+      "group": "MISC.",
+      "page_ref": "p.227",
+      "body": "Post-Session:\n• Tally Salvage and calculate Scrap total.\n• Pay Upkeep and Upgrade Crawler if enough paid.\n• Restore Mech and Pilot SP and HP. Repair Systems and heal Injuries.\n• Roll to find out what's available in the Trade Hall.\n• Craft new Systems, Modules, and Chassis. Then customise your Mech with all the new gear.\n• Train new Pilot Abilities in the Pilot Bay.\n• Obtain a new piece of Pilot Equipment.\n\nPre-session:\n• Gather Cantina rumours.\n• Prepare for the salvage run."
+    },
+    {
+      "id": "safety",
+      "name": "Safety Protocols",
+      "group": "MISC.",
+      "page_ref": "p.12",
+      "body": "Boundaries:\n• Out of Bounds — Discuss any hard limits for your game, any Player or the Mediator may specify content that is out of bounds.\n• Off Camera — These topics may be included, but not detailed. Refer to these indirectly or in the abstract.\n\nStop Sign:\nUse the Stop Sign to signal if something makes you feel uncomfortable or if you need to pause the game at any time. You do not need to justify its use.\nIf someone uses the Stop Sign find out why out of character and consider setting new boundaries or revisiting existing ones."
+    },
+    {
+      "id": "salvage_procedures",
+      "name": "Salvage Procedures",
+      "group": "SALVAGING",
+      "page_ref": "p.245",
+      "body": "Mech Salvage:\n• Use Mech Salvage Ability on a valid target.\n• Roll on Mech Salvage Table.\n\nArea Salvage:\n• Use Area Salvage Ability.\n• Salvage listed by Tech type and Supply e.g. T2 // Supply 3.\n• Spend AP/EP to Salvage per attempt. May attempt a number of times = Supply.\n• Roll on Area Salvage Table per attempt made."
+    },
+    {
+      "id": "tech_levels",
+      "name": "Tech Levels",
+      "group": "SALVAGING",
+      "page_ref": "",
+      "body": "Tech 1 — Basic industrial equipment, simple mechanisms, antique, obsolete, or scrap built weaponry.\nTech 2 — Core industrial machines, basic weaponry, standard build mechanisms and electronics.\nTech 3 — Basic military equipment, specialised industrial equipment, more refined electronics and precision machinery.\nTech 4 — Military grade weaponry and support systems, very specialised industrial gear, high tech electronics and components.\nTech 5 — Corpo mil-tech grade equipment, the very best in the field. Highly specialised industrial gear.\nTech 6 — State of the art, secret projects that begin with X, bio and nanite tech."
+    },
+    {
+      "id": "conditions",
+      "name": "Conditions",
+      "group": "SALVAGING",
+      "page_ref": "p.244",
+      "body": "Intact — Working Condition, can be fitted to a Mech.\nDamaged — Repair with Scrap or in Mech Bay.\nDestroyed — Can't be Salvaged."
+    },
+    {
+      "id": "scrap_value",
+      "name": "Scrap Value",
+      "group": "SALVAGING",
+      "page_ref": "p.244",
+      "body": "• 1 Scrap = 1 Cargo\n• Scrap Value = No. of Scrap × Tech Level\n  e.g. 2× T6 Scrap = 12× T1 Scrap"
+    }
+  ]
+}
