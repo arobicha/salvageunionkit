@@ -133,13 +133,16 @@ class RegionWizard(QDialog):
 
     def _collect(self) -> RegionData:
         ov = self._page_overview.get_data()
+        areas = self._page_areas.get_areas()
+        explicit_cap = int(ov.get("max_scrap_budget", 0))
         return RegionData(
             name=ov["name"],
             core_feature=ov["core_feature"],
             terrain_type=ov["terrain_type"],
             tech_level=ov["tech_level"],
+            max_scrap_budget=explicit_cap or sum(a.scrap_budget for a in areas),
             threats=self._page_threats.get_threats(),
             settlements=self._page_settlements.get_settlements(),
-            areas=self._page_areas.get_areas(),
+            areas=areas,
             encounter_table=self._page_encounters.get_entries(),
         )

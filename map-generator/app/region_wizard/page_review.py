@@ -29,7 +29,8 @@ class PageReview(QWidget):
     def populate(self, region: RegionData) -> None:
         lines: list[str] = [
             f"REGION: {region.name}",
-            f"Terrain: {region.terrain_type}   Tech Level: {region.tech_level}",
+            f"Terrain: {region.terrain_type}   Tech Level: {region.tech_level}   "
+            f"Max Scrap: {region.max_scrap_budget}sc",
         ]
         if region.core_feature:
             lines += ["", region.core_feature]

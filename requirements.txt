@@ -1,0 +1,6 @@
+PySide6
+Pillow
+python-frontmatter
+markdown
+weasyprint
+SQLAlchemy>=2.0

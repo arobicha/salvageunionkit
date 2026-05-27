@@ -75,6 +75,16 @@ class PageOverview(QWidget):
         tech_row.addStretch()
         layout.addLayout(tech_row)
 
+        budget_row = QHBoxLayout()
+        budget_row.addWidget(QLabel("Max Scrap Budget (region-wide cap, 0 = auto-sum from areas):"))
+        self._max_scrap = QSpinBox()
+        self._max_scrap.setRange(0, 9999)
+        self._max_scrap.setValue(0)
+        self._max_scrap.setSuffix("sc")
+        budget_row.addWidget(self._max_scrap)
+        budget_row.addStretch()
+        layout.addLayout(budget_row)
+
         self._suggest_name()
         self._suggest_terrain()
 
@@ -93,6 +103,7 @@ class PageOverview(QWidget):
             "core_feature": self._feature.toPlainText().strip(),
             "terrain_type": self._terrain.text().strip() or "Ashfall Plains",
             "tech_level": self._tech.value(),
+            "max_scrap_budget": self._max_scrap.value(),
         }
 
 

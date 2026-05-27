@@ -32,6 +32,7 @@ class AreaDetails:
     is_starting: bool = False   # safe Mech deploy point
     linked_threat_id: str = ""
     scrap_budget: int = 0
+    notes: str = ""
     id: str = field(default_factory=_new_id)
 
 
@@ -48,6 +49,8 @@ class RegionData:
     core_feature: str = ""
     terrain_type: str = "Ashfall Plains"
     tech_level: int = 2
+    max_scrap_budget: int = 0
+    gm_notes: str = ""
     threats: list[ThreatDetails] = field(default_factory=list)
     settlements: list[SettlementDetails] = field(default_factory=list)
     areas: list[AreaDetails] = field(default_factory=list)

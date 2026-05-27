@@ -36,3 +36,7 @@ desktop.ini
 # Misc
 *.log
 *.tmp
+
+# Local region database
+*.sqlite
+*.sqlite-journal
