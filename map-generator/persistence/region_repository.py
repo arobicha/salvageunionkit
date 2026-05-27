@@ -14,6 +14,13 @@ from persistence import mappers
 
 
 @dataclass(frozen=True)
+class AreaBackground:
+    image_bytes: bytes
+    native_w: int
+    native_h: int
+
+
+@dataclass(frozen=True)
 class RegionSummary:
     id: str
     name: str
@@ -36,11 +43,14 @@ class RegionRepository:
 
     def save_region(self, region: RegionData) -> None:
         with self._session_factory() as session:
+            preserved = _capture_area_blobs(session, region.id)
             existing = session.get(RegionORM, region.id)
             if existing is not None:
                 session.delete(existing)
                 session.flush()
             session.add(mappers.region_to_orm(region))
+            session.flush()
+            _restore_area_blobs(session, region.id, preserved)
             session.commit()
 
     def load_region(self, region_id: str) -> RegionData | None:
@@ -91,3 +101,69 @@ class RegionRepository:
             if orm is None:
                 return None
             return mappers.graph_from_json(orm.point_crawl_json)
+
+    def set_area_background(
+        self, area_id: str, image_bytes: bytes, native_w: int, native_h: int,
+    ) -> None:
+        with self._session_factory() as session:
+            orm = session.get(AreaORM, area_id)
+            if orm is None:
+                return
+            orm.background_image = image_bytes
+            orm.background_native_w = native_w
+            orm.background_native_h = native_h
+            session.commit()
+
+    def clear_area_background(self, area_id: str) -> None:
+        with self._session_factory() as session:
+            orm = session.get(AreaORM, area_id)
+            if orm is None:
+                return
+            orm.background_image = None
+            orm.background_native_w = 0
+            orm.background_native_h = 0
+            session.commit()
+
+    def get_area_background(self, area_id: str) -> AreaBackground | None:
+        with self._session_factory() as session:
+            orm = session.get(AreaORM, area_id)
+            if orm is None or not orm.background_image:
+                return None
+            return AreaBackground(
+                image_bytes=bytes(orm.background_image),
+                native_w=orm.background_native_w,
+                native_h=orm.background_native_h,
+            )
+
+
+def _capture_area_blobs(session: Session, region_id: str) -> dict[str, dict]:
+    rows = session.execute(
+        select(AreaORM).where(AreaORM.region_id == region_id)
+    ).scalars().all()
+    return {
+        r.id: {
+            "point_crawl_json": r.point_crawl_json,
+            "background_image": r.background_image,
+            "background_native_w": r.background_native_w,
+            "background_native_h": r.background_native_h,
+        }
+        for r in rows
+    }
+
+
+def _restore_area_blobs(
+    session: Session, region_id: str, preserved: dict[str, dict],
+) -> None:
+    if not preserved:
+        return
+    rows = session.execute(
+        select(AreaORM).where(AreaORM.region_id == region_id)
+    ).scalars().all()
+    for row in rows:
+        saved = preserved.get(row.id)
+        if not saved:
+            continue
+        row.point_crawl_json = saved["point_crawl_json"]
+        row.background_image = saved["background_image"]
+        row.background_native_w = saved["background_native_w"]
+        row.background_native_h = saved["background_native_h"]

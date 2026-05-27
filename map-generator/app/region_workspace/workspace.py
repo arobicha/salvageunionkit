@@ -48,6 +48,9 @@ class RegionWorkspace(QWidget):
         self._area_view.notes_changed.connect(self._on_area_notes)
         self._area_view.regenerate_requested.connect(self._on_area_regenerate)
         self._area_view.point_edited.connect(self._on_point_edited)
+        self._area_view.graph_mutated.connect(self._on_area_graph_mutated)
+        self._area_view.background_chosen.connect(self._on_background_chosen)
+        self._area_view.background_cleared.connect(self._on_background_cleared)
 
     def open_region(self, region: RegionData) -> None:
         self._region = region
@@ -86,7 +89,8 @@ class RegionWorkspace(QWidget):
         if graph is None:
             graph = self._generate_area_graph(area)
             self._repo.save_area_point_crawl(area_id, graph)
-        self._area_view.load(area, graph)
+        bg = self._repo.get_area_background(area_id)
+        self._area_view.load(area, graph, bg.image_bytes if bg else None)
         self._stack.setCurrentWidget(self._area_view)
 
     def _on_new_area(self) -> None:
@@ -139,6 +143,26 @@ class RegionWorkspace(QWidget):
         if graph is None:
             return
         self._repo.save_area_point_crawl(area_id, graph)
+
+    def _on_area_graph_mutated(self, area_id: str) -> None:
+        graph = self._area_view.current_graph()
+        if graph is None:
+            return
+        self._repo.save_area_point_crawl(area_id, graph)
+
+    def _on_background_chosen(self, area_id: str, file_path: str) -> None:
+        try:
+            data = open(file_path, "rb").read()
+        except OSError:
+            return
+        from PySide6.QtGui import QPixmap
+        pixmap = QPixmap()
+        if not pixmap.loadFromData(data):
+            return
+        self._repo.set_area_background(area_id, data, pixmap.width(), pixmap.height())
+
+    def _on_background_cleared(self, area_id: str) -> None:
+        self._repo.clear_area_background(area_id)
 
     def _generate_area_graph(self, area: AreaDetails) -> MapGraph:
         if self._region is None:

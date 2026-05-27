@@ -1,7 +1,9 @@
 """Area ORM table."""
 from __future__ import annotations
 
-from sqlalchemy import String, Integer, Text, Boolean, ForeignKey
+from typing import Optional
+
+from sqlalchemy import String, Integer, Text, Boolean, ForeignKey, LargeBinary
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from persistence.schema._base import Base
@@ -22,5 +24,8 @@ class AreaORM(Base):
     scrap_budget: Mapped[int] = mapped_column(Integer, default=0)
     notes: Mapped[str] = mapped_column(Text, default="")
     point_crawl_json: Mapped[str] = mapped_column(Text, default="")
+    background_image: Mapped[Optional[bytes]] = mapped_column(LargeBinary, nullable=True, default=None)
+    background_native_w: Mapped[int] = mapped_column(Integer, default=0)
+    background_native_h: Mapped[int] = mapped_column(Integer, default=0)
 
     region: Mapped["RegionORM"] = relationship(back_populates="areas")  # noqa: F821
